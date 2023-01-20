@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+input:focus {
+  outline: 1px solid rgba(255, 255, 255, 0.8);
+}
+
 body {
   font-family: 'Outfit', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -50,7 +54,7 @@ h1 {
   padding: .7rem 1.5rem;
   font-size: 1.2rem;
   border-radius: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   background: rgba(255, 255, 255, 0.1);
   color: #f8f8f8;
   width: clamp(200px, 90%, 350px);
@@ -62,7 +66,6 @@ h1 {
 
 .container {
   max-width: 600px;
-  /* height: 450px; */
   margin: auto;
   padding: 0 1rem;
   position: relative;
@@ -104,4 +107,12 @@ h1 {
 
 .bold {
   font-weight: 700;
+}
+
+.err p {
+  font-size: 1.1rem;
+  text-transform: capitalize;
+  line-height: 1.7rem;
+  font-weight: 300;
+  text-align: center;
 }

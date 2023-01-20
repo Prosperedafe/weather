@@ -1,18 +1,34 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
-function App() {
+import Spinner from "./spinner";
+
+const App = () => {
   const [data, setData] = useState({});
+  const [err, setErr] = useState("");
+  // const [loading, setLoading] = useState(false)
   const [location, setLocation] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=895284fb2d2c50a520ea537456963d9c`;
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
-      axios.get(url).then((response) => {
-        setData(response.data);
-        console.log(response.data);
-      });
+      axios.get(url)
+        .then((response) => {
+          // setLoading(true)
+          setData(response.data);
+          console.log(response.data);
+        }
+        )
+        // setLoading(false)
+
+        .catch((error) => {
+          // setLoading(true)
+
+          console.log(error);
+          console.log(error.response.data.message);
+          setErr(error.response.data.message)
+        })
       setLocation("");
     }
   };
@@ -28,6 +44,9 @@ function App() {
           type="text"
         />
       </div>
+      {/* {loading && (
+        <Spinner />
+      )} */}
       <div className="container">
         <div className="top">
           <div className="location">
@@ -40,7 +59,8 @@ function App() {
             {data.weather ? <p>{data.weather[0].main}</p> : null}
           </div>
         </div>
-
+        {err && (<div className="err"><p>{err}. Make sure you check your Spelling correctly Before you search</p></div>
+        )}
         {data.name !== undefined && (
           <div className="bottom">
             <div className="feels">
