@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
-import Spinner from "./spinner";
+// import Spinner from "./spinner";
 
 const App = () => {
   const [data, setData] = useState({});
