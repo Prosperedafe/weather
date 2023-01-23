@@ -59,8 +59,7 @@ const App = () => {
             {data.weather ? <p>{data.weather[0].main}</p> : null}
           </div>
         </div>
-        {err && (<div className="err"><p>{err}. Make sure you check your Spelling correctly Before you search</p></div>
-        )}
+
         {data.name !== undefined && (
           <div className="bottom">
             <div className="feels">
@@ -82,6 +81,8 @@ const App = () => {
           </div>
         )}
       </div>
+      {err && (<div className="err"><p>{err}. Make sure you check your Spelling correctly Before you search</p></div>
+      )}
     </div>
   );
 }
