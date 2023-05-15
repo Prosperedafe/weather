@@ -1,29 +1,29 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./App.css";
-// import Spinner from "./spinner";
+import Spinner from "./spinner";
 
 const App = () => {
   const [data, setData] = useState({});
   const [err, setErr] = useState("");
-  // const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false)
   const [location, setLocation] = useState("");
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=895284fb2d2c50a520ea537456963d9c`;
 
   const searchLocation = (event) => {
     if (event.key === "Enter") {
+      setLoading(true)
       axios.get(url)
         .then((response) => {
-          // setLoading(true)
+          setLoading(false)
           setData(response.data);
           console.log(response.data);
         }
         )
-        // setLoading(false)
 
         .catch((error) => {
-          // setLoading(true)
+          setLoading(false)
 
           console.log(error);
           console.log(error.response.data.message);
@@ -44,9 +44,9 @@ const App = () => {
           type="text"
         />
       </div>
-      {/* {loading && (
+      {loading && (
         <Spinner />
-      )} */}
+      )}
       <div className="container">
         <div className="top">
           <div className="location">
